@@ -65,6 +65,7 @@ if (isset($_POST['checkBoxArray'])) {
                             <th>Content</th>
                             <th>Comments</th>
                             <th>Date</th>
+                            <th>View</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -121,6 +122,7 @@ if (isset($_POST['checkBoxArray'])) {
                             echo "<td>{$post_content}</td>";
                             echo "<td>{$post_comment_count}</td>";
                             echo "<td>{$post_date}</td>";
+                            echo "<td name='view'><a href='../post.php?p_id={$post_id}'>view</a></td>";
                             echo "<td name='edit'><a href='posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
                             echo "<td name='delete'><a href='posts.php?delete={$post_id}'>delete</a></td>";
                             echo "</tr>";
