@@ -24,6 +24,13 @@ function insert_categories() {
     }
 }
 
+function dump($my_input) {
+    echo "<pre>";
+    var_dump($my_input);
+    echo "</pre>";
+    die();
+}
+
 function findAllCategories() {
     global $connection;
 

@@ -1,8 +1,33 @@
 <?php
 if (isset($_POST['checkBoxArray'])) {
-    foreach ($_POST['checkBoxArray'] as $checkBoxValue) {
-   //    $bulk_options = $_POST['$bulk_options'];
-        echo $checkBoxValue;
+    foreach ($_POST['checkBoxArray'] as $postValueId) {
+        $bulk_options = $_POST['bulk_options'];
+
+        switch ($bulk_options) {
+            case 'published':
+
+              $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = '{$postValueId}'";
+              $update_to_published_status = mysqli_query($connection,$query);
+
+              confirm($update_to_published_status);
+                break;
+
+            case 'draft':
+
+                $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = '{$postValueId}'";
+                $update_to_draft_status = mysqli_query($connection,$query);
+
+                confirm($update_to_draft_status);
+                break;
+
+            case 'delete':
+
+                $query = "DELETE FROM posts WHERE post_id = '{$postValueId}'";
+                $update_to_delete_status = mysqli_query($connection,$query);
+
+                confirm($update_to_delete_status);
+
+        }
     }
 }
 
@@ -17,20 +42,20 @@ if (isset($_POST['checkBoxArray'])) {
                   <select class="form-control" name="bulk_options" id="">
                       <option value="">Select Options</option>
                       <option value="published">Publish</option>
-                      <option value="">Draft</option>
-                      <option value="">Delete</option>
+                      <option value="draft">Draft</option>
+                      <option value="delete">Delete</option>
                   </select>
 
               </div>
 
               <div class="col-xs-4">
                   <input type="submit" name="submit" class="btn btn-success" value="Apply">
-                  <a class="btn btn-primary" href="add_post.php">Add New</a>
+                  <a class="btn btn-primary" href="posts.php?source=add_post">Add New</a>
               </div>
                         <thead>
                         <tr>
-                            <th><input type="checkbox" id="selectAllBoxes"></th>
-                            <th>Id;;</th>
+                            <th><input type="checkbox" id="selectAllBoxes"" ></th>
+                            <th>Id</th>
                             <th>Author</th>
                             <th>Title</th>
                             <th>Category</th>
@@ -117,5 +142,4 @@ if (isset($_POST['checkBoxArray'])) {
             }
 
           ?>
-
 
