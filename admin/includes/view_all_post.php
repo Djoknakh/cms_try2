@@ -30,7 +30,7 @@ if (isset($_POST['checkBoxArray'])) {
                         <thead>
                         <tr>
                             <th><input type="checkbox" id="selectAllBoxes"></th>
-                            <th>Id</th>
+                            <th>Id;</th>
                             <th>Author</th>
                             <th>Title</th>
                             <th>Category</th>
