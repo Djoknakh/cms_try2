@@ -1,6 +1,7 @@
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
 <?php  include "admin/functions.php"; ?>
+
 <?php
 
 if (isset($_POST['submit'])) {
@@ -10,21 +11,35 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     $username = $connection->real_escape_string($username);
-    $username = $connection->real_escape_string($email);
-    $username = $connection->real_escape_string($password);
+    $email = $connection->real_escape_string($email);
+    $password = $connection->real_escape_string($password);
+
+    if (!empty($username) && (!empty($email)) && (!empty($password))) {
 
     $query_salt = "SELECT user_randSalt FROM users";
     $select_randSalt_query = mysqli_query($connection,$query_salt);
     confirm($select_randSalt_query);
 
     $row = mysqli_fetch_array($select_randSalt_query);
-   // $salt = $row['randSalt'];
 
+    $salt = $row['user_randSalt'];
+    $password = crypt ($password, $salt);
 
     $query = "INSERT INTO users (user_name, user_email, user_password, user_role) VALUES ('{$username}', '{$email}', '{$password}', 'subscriber')";
     $add_user_query = $connection->query($query);
     confirm($add_user_query);
 
+    $message = "Your registration has been submitted";
+
+    }
+    else {
+        $message = 'Fields cannot be empty';
+    }
+
+
+}
+else {
+    $message="";
 }
 //$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,
 //                  post_image, post_content, post_tags, post_status)";
@@ -52,6 +67,7 @@ if (isset($_POST['submit'])) {
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-wrap">
                 <h1>Register</h1>
+                    <h6 class="text-center"><strong><?= $message ?></strong></h6>
                     <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="username" class="sr-only">username</label>

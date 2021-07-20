@@ -36,9 +36,18 @@ if (isset($_POST['edit_user'])) {
 
     global $connection;
 
+    $query = "SELECT user_randSalt FROM users";
+    $select_randSalt_query = $connection->query($query);
+   // confirm($select_randSalt_query);
+
+    $row = $select_randSalt_query->fetch_array();
+    $salt = $row['user_randSalt'];
+
+    $hashed_password = crypt($user_password,$salt);
+
     $query = "UPDATE users SET ";
     $query.= "user_name = '{$user_name}', ";
-    $query.= "user_password = '{$user_password}', ";
+    $query.= "user_password = '{$hashed_password}', ";
     $query.= "user_firstname = '{$user_firstname}', ";
     $query.= "user_lastname = '{$user_lastname}', ";
     $query.= "user_email = '{$user_email}', ";
