@@ -43,7 +43,7 @@ if (isset($_POST['checkBoxArray'])) {
                     $post_image = $row['post_image'];
                     $post_tags = $row['post_tags'];
                     $post_content = $row['post_content'];
-                    $post_date = $row['post_date'];;
+                    $post_date = $row['post_date'];
                 }
 
                 $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, 
@@ -69,7 +69,7 @@ if (isset($_POST['checkBoxArray'])) {
                   <select class="form-control" name="bulk_options" id="">
                       <option value="">Select Options</option>
                       <option value="published">Publish</option>
-                      <option value="clone">clone</option>
+                      <option value="clone">Clone</option>
                       <option value="draft">Draft</option>
                       <option value="delete">Delete</option>
                   </select>
@@ -92,6 +92,7 @@ if (isset($_POST['checkBoxArray'])) {
                             <th>Tags</th>
                             <th>Content</th>
                             <th>Comments</th>
+                            <th>Views</th>
                             <th>Date</th>
                             <th>View</th>
                             <th>Edit</th>
@@ -119,6 +120,7 @@ if (isset($_POST['checkBoxArray'])) {
                             $post_content = $row['post_content'];
                             $post_comment_count = $row['post_comment_count'];
                             $post_date = $row['post_date'];
+                            $post_views_count = $row['post_views_count'];
 
                             echo "<tr>";
                             ?>
@@ -147,10 +149,11 @@ if (isset($_POST['checkBoxArray'])) {
                             echo "<td>{$post_tags}</td>";
                             echo "<td>{$post_content}</td>";
                             echo "<td>{$post_comment_count}</td>";
+                            echo "<td>{$post_views_count}</td>";
                             echo "<td>{$post_date}</td>";
                             echo "<td name='view'><a href='../post.php?p_id={$post_id}'>view</a></td>";
                             echo "<td name='edit'><a href='posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
-                            echo "<td name='delete'><a onClick=\"javasript: return confirm('Are you sure want to delete'); \" href='posts.php?delete={$post_id}'>delete</a></td>";
+                            echo "<td name='delete'><a onClick=\"javasript: return confirm('Are you sure want to delete?'); \" href='posts.php?delete={$post_id}'>delete</a></td>";
                             echo "</tr>";
 
                         }
