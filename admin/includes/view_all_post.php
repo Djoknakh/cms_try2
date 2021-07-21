@@ -114,8 +114,6 @@ if (isset($_POST['checkBoxArray'])) {
 
 
 
-
-
                             echo "<td>{$post_status}</td>";
                             echo "<td><img src='../img/{$post_image}' width='100' class = 'img-rounded' alt='image'></td>";
                             echo "<td>{$post_tags}</td>";
@@ -124,8 +122,9 @@ if (isset($_POST['checkBoxArray'])) {
                             echo "<td>{$post_date}</td>";
                             echo "<td name='view'><a href='../post.php?p_id={$post_id}'>view</a></td>";
                             echo "<td name='edit'><a href='posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
-                            echo "<td name='delete'><a href='posts.php?delete={$post_id}'>delete</a></td>";
+                            echo "<td name='delete'><a onClick=\"javasript: return confirm('Are you sure want to delete'); \" href='posts.php?delete={$post_id}'>delete</a></td>";
                             echo "</tr>";
+
                         }
                         ?>
 
