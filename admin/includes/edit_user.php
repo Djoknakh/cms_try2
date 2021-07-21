@@ -38,7 +38,7 @@ if (isset($_POST['edit_user'])) {
 
     $query = "SELECT user_randSalt FROM users";
     $select_randSalt_query = $connection->query($query);
-   // confirm($select_randSalt_query);
+    confirm($select_randSalt_query);
 
     $row = $select_randSalt_query->fetch_array();
     $salt = $row['user_randSalt'];
@@ -57,7 +57,6 @@ if (isset($_POST['edit_user'])) {
     $query.= "WHERE user_id = '{$the_user_id}'";
 
     $edit_user_query = mysqli_query($connection,$query);
-
     confirm($edit_user_query);
 
 
@@ -80,7 +79,7 @@ if (isset($_POST['edit_user'])) {
     </div>
 
     <select name="user_role" id="">
-        <option value="subscriber"> <?php echo $user_role ?> </option>
+        <option value="<?php echo $user_role ?>"> <?php echo $user_role ?> </option>
 
         <?php
             if ($user_role == 'admin') {
