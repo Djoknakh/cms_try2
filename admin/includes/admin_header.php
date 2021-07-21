@@ -32,7 +32,8 @@ if (!isset($_SESSION['user_role'])) {
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <script src="js/jquery.js"></script>
+    <script src="js/scripts.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,9 +43,14 @@ if (!isset($_SESSION['user_role'])) {
 
     <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
     <link href="css/summernote.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/loader.css?v=2" rel="stylesheet">
+
+
 
     <!-- Script from google.charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 </head>
 
