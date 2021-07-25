@@ -16,7 +16,6 @@ if (isset($_POST['submit'])) {
 
     if (!empty($username) && (!empty($email)) && (!empty($password))) {
 
- //   $password = password_hash($password, PASSWORD_BCRYPT, array ('cost' => 12));
 
     $query_salt = "SELECT user_randSalt FROM users";
     $select_randSalt_query = mysqli_query($connection,$query_salt);
@@ -43,14 +42,7 @@ if (isset($_POST['submit'])) {
 else {
     $message="";
 }
-//$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,
-//                  post_image, post_content, post_tags, post_status)";
-//$query .= "VALUES ({$post_category_id}, '{$post_title}', '{$post_author}', now(),
-//                  '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_status}')";
-//
-//
-//$create_post_query = mysqli_query($connection, $query);
-//confirm($create_post_query);
+
 
 ?>
 
@@ -68,23 +60,23 @@ else {
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-wrap">
-                <h1>Register</h1>
-                    <h6 class="text-center"><strong><?= $message ?></strong></h6>
-                    <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
-                        <div class="form-group">
-                            <label for="username" class="sr-only">username</label>
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username">
-                        </div>
+                <h1>Contact</h1>
+
+                    <form role="form" action="" method="post" id="login-form" autocomplete="off">
+
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="sr-only">Subject</label>
+                            <input type="" name="email" id="subject" class="form-control" placeholder="Enter your subject">
                         </div>
                          <div class="form-group">
-                            <label for="password" class="sr-only">Password</label>
-                            <input type="password" name="password" id="key" class="form-control" placeholder="Password">
+                             <textarea class="form-control" name="" id="" cols="50" rows="10"></textarea>
                         </div>
                 
-                        <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
+                        <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Submit">
                     </form>
                  
                 </div>

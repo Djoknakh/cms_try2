@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 $(document).ready(function (){
-    console.log('hello');
     var div_box = "<div id = 'load-screen'> <div id='loading'></div></div>";
     $("body").prepend(div_box);
     $('#load-screen').delay(700).fadeOut(600, function () {
@@ -34,3 +33,14 @@ $(document).ready(function (){
     });
 
 });
+
+function loadUsersOnline () {
+    $.get("functions.php?onlineusers=result", function (data) {
+        $(".usersonline").text(data);
+    });
+}
+
+setInterval(function (){
+    loadUsersOnline();
+},500);
+
