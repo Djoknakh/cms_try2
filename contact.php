@@ -4,47 +4,26 @@
 
 <?php
 
+// Сообщение
+$message = "Line 1\r\nLine 2\r\nLine 3";
+
+// На случай если какая-то строка письма длиннее 70 символов мы используем wordwrap()
+$message = wordwrap($message, 70, "\r\n");
+
+// Отправляем
+mail('jok@mail.ru', 'My Subject', $message);
+
+
+
 if (isset($_POST['submit'])) {
 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $username = $connection->real_escape_string($username);
-    $email = $connection->real_escape_string($email);
-    $password = $connection->real_escape_string($password);
-
-    if (!empty($username) && (!empty($email)) && (!empty($password))) {
-
-
-    $query_salt = "SELECT user_randSalt FROM users";
-    $select_randSalt_query = mysqli_query($connection,$query_salt);
-    confirm($select_randSalt_query);
-
-    $row = mysqli_fetch_array($select_randSalt_query);
-
-    $salt = $row['user_randSalt'];
-    $password = crypt ($password, $salt);
-
-    $query = "INSERT INTO users (user_name, user_email, user_password, user_role) VALUES ('{$username}', '{$email}', '{$password}', 'subscriber')";
-    $add_user_query = $connection->query($query);
-    confirm($add_user_query);
-
-    $message = "Your registration has been submitted";
-
-    }
-    else {
-        $message = 'Fields cannot be empty';
-    }
-
+    $to = "jok@mail.ru";
+    $subject = $_POST['subject'];
+    $body = $_POST['body'];
 
 }
-else {
-    $message="";
-}
 
-
-?>
+ ?>
 
 
     <!-- Navigation -->
